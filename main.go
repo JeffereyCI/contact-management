@@ -4,6 +4,7 @@ import (
 	"Tugas_1/input"
 	"Tugas_1/service"
 	"fmt"
+	"strconv"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 		fmt.Println("=============================================")
 		inputUser := input.InputUser("Masukan pilihan menu: ")
 
-		var numOpsiSelect string
+		var numOpsiSelect int
 		var name, phone, email, address string
 
 		switch inputUser {
@@ -33,10 +34,16 @@ func main() {
 		case "2":
 			service.ReadContact()
 		case "3":
-			numOpsiSelect = input.InputUser("Pilih kontak yang akan di ubah: ")
-			service.UpdateContact(numOpsiSelect)
+			numOpsiSelect, _ = strconv.Atoi(input.InputUser("Pilih kontak yang akan di ubah: "))
+			updOpsiSelect, _ := strconv.Atoi(input.InputUser("Pilih data yang akan di ubah: "))
+			fmt.Println("1. Nama")
+			fmt.Println("2. No Telp")
+			fmt.Println("3. Email")
+			fmt.Println("4. Alamat")
+			updValue := input.InputUser("Masukan data baru: ")
+			service.UpdateContact(numOpsiSelect, updOpsiSelect, updValue)
 		case "4":
-			numOpsiSelect = input.InputUser("Masukan nomor kontak yang ingin dihapus: ")
+			numOpsiSelect, _ = strconv.Atoi(input.InputUser("Masukan nomor kontak yang ingin dihapus: "))
 			service.DeleteContact(numOpsiSelect)
 		case "5":
 			fmt.Println("Terima kasih telah menggunakan aplikasi ini!")
@@ -44,7 +51,5 @@ func main() {
 		default:
 			fmt.Println("Pilihan tidak valid, silakan coba lagi.")
 		}
-
-		numOpsiSelect = ""
 	}
 }
