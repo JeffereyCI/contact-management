@@ -19,8 +19,10 @@ func InputUser(prompt string) string {
 		if err != nil {
 			fmt.Println("Terjadi error input", err)
 			continue
-		} else if input == "" {
-			fmt.Println("Input tidak boleh kosong!")
+		} else if input == "" || input == "0" {
+			fmt.Println()
+			fmt.Println("Pilihan tidak valid!")
+			fmt.Println()
 			continue
 		}
 
