@@ -68,6 +68,7 @@ func main() {
 			fmt.Println("----------------------------------------------")
 
 			numStr := input.InputUser("Pilih kontak yang akan diubah: ")
+			fmt.Println()
 			if numStr == "q" {
 				fmt.Println()
 				continue
@@ -80,6 +81,8 @@ func main() {
 			}
 
 			if len(service.ContactProject) == 0 {
+				fmt.Println("kontak yang dipilih tidak ada")
+				fmt.Println()
 				continue
 			} else if len(service.ContactProject) > 0 && (numOpsiSelect <= len(service.ContactProject)) {
 				fmt.Println()
